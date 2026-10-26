@@ -1,0 +1,7 @@
+# Mismatched anchors: real anchor text paired with the wrong sample. Physical-form and
+# intent anchors come from two different, fixed donor samples.
+base: ../semantic_anchors.yaml
+name: mismatched_anchor
+
+training:
+  mismatched_sources: [[physical_motion_llm], [semantic_intent_llm]]

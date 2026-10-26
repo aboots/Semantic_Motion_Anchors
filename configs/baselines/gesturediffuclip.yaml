@@ -1,0 +1,10 @@
+# GestureDiffuCLIP-style objective: plain transcript-motion InfoNCE on a frozen CLIP ViT-B/32
+# text encoder.
+base: ../text_contrastive.yaml
+name: gesturediffuclip
+
+text_encoder:
+  model_name: clip-ViT-B-32
+  batch_size: 256
+  transcript_prompt_name: null
+  anchor_prompt_name: null

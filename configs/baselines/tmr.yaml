@@ -1,0 +1,7 @@
+# TMR-style objective: transcript-motion InfoNCE with false-negative filtering. In-batch pairs
+# whose generated-anchor embeddings have cosine similarity >= 0.9 are removed as negatives.
+base: ../text_contrastive.yaml
+name: tmr
+
+training:
+  false_negative_filtering: {threshold: 0.9, similarity: anchor}

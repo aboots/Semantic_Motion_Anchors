@@ -1,0 +1,14 @@
+# Random Anchor control of Tables 2 and 11: both auxiliary terms use one fixed Gaussian
+# unit vector per sample (seeded by SHA-256 of the sample id) instead of anchor text.
+base: ../base.yaml
+name: random_anchor
+
+training:
+  init_from: text_contrastive
+  epochs: 40
+  learning_rate: 5.0e-5
+  early_stopping_patience: 10
+  losses:
+    transcript_motion: {left: transcript, right: motion, weight: 1.0}
+    intent_transcript: {left: random_fixed_full, right: transcript, weight: 0.1}
+    physical_motion: {left: random_fixed_full, right: motion, weight: 0.1}

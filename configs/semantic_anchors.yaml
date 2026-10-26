@@ -1,0 +1,17 @@
+# Semantic motion anchor supervision (Eq. 2): the motion branch is anchored to the
+# physical-form description and the transcript branch to the communicative intent.
+# Stage 2 starts from the stage-1 Text Contrastive model with a freshly initialized pi_an.
+base: base.yaml
+name: semantic_anchors
+
+training:
+  init_from: text_contrastive
+  reset_modules: [anchor_projection]
+  epochs: 40
+  learning_rate: 5.0e-5
+  early_stopping_patience: 10
+  losses:
+    transcript_motion: {left: transcript, right: motion, weight: 1.0}                          # L_tm
+    intent_transcript: {left: semantic_intent_llm, right: transcript, weight: 0.15}            # lambda_s L_int
+    physical_motion: {left: physical_motion_llm, right: motion, weight: 0.03}                  # lambda_p L_phys
+    physical_intent_bridge: {left: physical_motion_llm, right: semantic_intent_llm, weight: 0.02}  # lambda_b L_br

@@ -1,0 +1,13 @@
+# Physical-form anchor only (L_tm + lambda_p L_phys).
+base: ../base.yaml
+name: physical_only
+
+training:
+  init_from: text_contrastive
+  reset_modules: [anchor_projection]
+  epochs: 40
+  learning_rate: 5.0e-5
+  early_stopping_patience: 10
+  losses:
+    transcript_motion: {left: transcript, right: motion, weight: 1.0}
+    physical_motion: {left: physical_motion_llm, right: motion, weight: 0.03}

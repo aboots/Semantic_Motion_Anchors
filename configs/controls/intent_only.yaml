@@ -1,0 +1,13 @@
+# Communicative-intent anchor only (L_tm + lambda_s L_int).
+base: ../base.yaml
+name: intent_only
+
+training:
+  init_from: text_contrastive
+  reset_modules: [anchor_projection]
+  epochs: 40
+  learning_rate: 5.0e-5
+  early_stopping_patience: 10
+  losses:
+    transcript_motion: {left: transcript, right: motion, weight: 1.0}
+    intent_transcript: {left: semantic_intent_llm, right: transcript, weight: 0.15}

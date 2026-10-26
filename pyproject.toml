@@ -1,0 +1,24 @@
+[build-system]
+requires = ["setuptools>=61"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "semantic-motion-anchors"
+version = "1.0.0"
+description = "Semantic Motion Anchors: Bridging Motion and Meaning in Co-Speech Gestures (NeurIPS 2026)"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "torch>=2.4",
+    "numpy",
+    "scipy",
+    "pyyaml",
+    "matplotlib",
+    "sentence-transformers>=3.0",
+    "transformers",
+    "accelerate",
+    "huggingface_hub",
+]
+
+[tool.setuptools]
+packages = ["semantic_motion_anchors"]

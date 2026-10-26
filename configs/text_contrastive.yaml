@@ -1,0 +1,11 @@
+# Direct transcript-motion contrastive baseline ("Text Contrastive"; "No Anchor" in the
+# ablations). Also the first training stage of every anchor-supervised model.
+base: base.yaml
+name: text_contrastive
+
+training:
+  epochs: 50
+  learning_rate: 4.0e-4
+  early_stopping_patience: 7
+  losses:
+    transcript_motion: {left: transcript, right: motion, weight: 1.0}

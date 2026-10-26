@@ -1,0 +1,7 @@
+# JEGAL-style objective (text only): pairs whose generated-anchor embeddings have cosine
+# similarity >= 0.85 receive a partial positive weight of 0.5.
+base: ../text_contrastive.yaml
+name: jegal
+
+training:
+  soft_positives: {threshold: 0.85, weight: 0.5, similarity: anchor}

@@ -1,0 +1,11 @@
+# Random Anchor control used in the TED-to-TED and TED-to-BEAT2 evaluations (Tables 5, 6
+# and 12): the semantic-anchor objective with separate fixed random vectors replacing the
+# physical-form and intent embeddings.
+base: ../semantic_anchors.yaml
+name: random_anchor_matched
+
+training:
+  losses:
+    intent_transcript: {left: random_fixed_semantic}
+    physical_motion: {left: random_fixed_physical}
+    physical_intent_bridge: {left: random_fixed_physical, right: random_fixed_semantic}
