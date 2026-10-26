@@ -8,8 +8,7 @@ Varsha Suresh, Mohammad Mahdi Abootorabi, Mohamed Salman, M. Hamza Mughal, Chris
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.30608-b31b1b.svg)](https://arxiv.org/abs/2605.30608)
 [![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SEMANTIX-ffcc4d)](https://huggingface.co/datasets/aboots/SEMANTIX)
-[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS_2026-Poster-2563eb)](https://neurips.cc/virtual/2026/loc/paris/poster/154665)
-
+[![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-2563eb)](https://neurips.cc/virtual/2026/loc/paris/poster/154665)
 </div>
 
 Semantic motion anchors are natural-language descriptions of a gesture's physical form and communicative intent. Gestures are tokenized into body and hand motion primitives, verbalized into physical descriptions, and grounded in the transcript with an LLM. The resulting anchors supervise a contrastive text-gesture retrieval model during training. At test time retrieval uses only the transcript and motion branches.
