@@ -83,33 +83,6 @@ python -m semantic_motion_anchors.evaluate --config configs/semantic_anchors.yam
 
 Runs are written to `outputs/runs/<config name>_seed<seed>/`; `--set key.path=value` overrides any config entry.
 
-## Reproducing the paper
-
-`bash scripts/run_beat2.sh` trains and evaluates every BEAT2 model for seeds 42–48. `bash scripts/run_cross_dataset.sh` runs the TED evaluations on top of it.
-
-| Result | Seeds | Command |
-|---|---|---|
-| Table 1: BEAT2 retrieval | 42–48 | `python scripts/summarize_beat2.py --tables main` |
-| Tables 2 and 11: anchor content | 42–48 | `python scripts/summarize_beat2.py --tables anchor` |
-| Mismatched, physical-only and intent-only anchors | 42–48 | `python scripts/summarize_beat2.py --tables controls` |
-| Table 3: semantic label match rate | 44 | `python scripts/label_match_rate.py --config configs/semantic_anchors.yaml --runs Ours=semantic_anchors_seed44 Text=text_contrastive_seed44 Random=random_anchor_seed44` |
-| Figures 2, 4 and 5: loss-weight sensitivity | 44 (λs, λp), 42 (λb) | `bash scripts/run_sweeps.sh` |
-| Figure 6: rank distribution | 44 | `python scripts/plot_figures.py rank-cdf --runs "Text Contrastive=text_contrastive_seed44" "Ours=semantic_anchors_seed44"` |
-| Tables 5 and 12: TED-to-TED | 42 | `outputs/runs/*_seed42/metrics/ted_to_ted.json` |
-| Table 6: TED-to-BEAT2 | 42 | `outputs/tables/table6.md` |
-| Cross-dataset retrieval in both directions | 42–48 | `outputs/tables/cross_dataset_seeds.md` |
-| Semantic context scored with BGE-M3 | 42 | `python scripts/rescore_semantic_context.py --config configs/semantic_anchors.yaml --seed 42 --methods "Text Contrastive=text_contrastive" "Random Anchor=random_anchor_matched" "Proposed=semantic_anchors"` |
-
-The Random Anchor control of Tables 2 and 11 is [controls/random_anchor.yaml](configs/controls/random_anchor.yaml); the TED evaluations use [controls/random_anchor_matched.yaml](configs/controls/random_anchor_matched.yaml). Re-embedding the text and training on other hardware changes individual numbers slightly.
-
-Notes on the protocol:
-- The 90/5/5 split is drawn over gesture clips, not recordings. Clips of the same BEAT2 recording, whose ±5 s context windows can overlap, may fall into different splits.
-- Models with physical-form or intent anchors train on 15,393 clips (two anchors could not be split); the others train on all 15,395.
-- Checkpoints are selected on validation MRR. The loss-weight sensitivity (Figures 2, 4 and 5) is reported on the test split.
-- The cross-dataset evaluation behind Table 6 gave 64 of the 778 TED gestures the intent label and intent text of BEAT2 rows that share their sample id in the source annotation file. This code uses the SEMANTIX intent category and intent of every TED gesture, so its cross-dataset numbers differ slightly from Table 6.
-
-For retrieval-augmented generation, `python -m semantic_motion_anchors.retrieve` returns the top-k BEAT2 gestures for a CSV of text queries.
-
 ## Semantic motion anchors
 
 Anchors are generated from the verbalized motion narrative `m` and the transcript with the structured-reasoning prompt in [anchors/prompts/semantic_anchor_generation.txt](anchors/prompts/semantic_anchor_generation.txt) (GPT-5.4). Generated anchors are compared with SEMANTIX gold descriptions using [anchors/prompts/llm_judge.txt](anchors/prompts/llm_judge.txt). Both prompts are reproduced from Appendix A.3. Each anchor is split into its physical-form and intent parts with Qwen3-8B (Appendix A.7):
