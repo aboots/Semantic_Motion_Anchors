@@ -4,7 +4,11 @@
 
 **NeurIPS 2026**
 
-Varsha Suresh, Mohammad Mahdi Abootorabi, Mohamed Salman, M. Hamza Mughal, Christian Theobalt, Ashwin Ram, Jürgen Steimle, Vera Demberg
+<p>
+Varsha Suresh<sup>&#42;</sup>, Mohammad Mahdi Abootorabi<sup>&#42;</sup>, Mohamed Salman, <br>M. Hamza Mughal, Christian Theobalt, Ashwin Ram, Jürgen Steimle, Vera Demberg
+</p>
+
+<sub>&#42; Equal contribution (co-first authors).</sub>
 
 [![arXiv](https://img.shields.io/badge/arXiv-2605.30608-b31b1b.svg)](https://arxiv.org/abs/2605.30608)
 [![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SEMANTIX-ffcc4d)](https://huggingface.co/datasets/aboots/SEMANTIX)
