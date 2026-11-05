@@ -10,6 +10,7 @@ Varsha Suresh<sup>&#42;</sup>, Mohammad Mahdi Abootorabi<sup>&#42;</sup>, Mohame
 
 <sub>&#42; Equal contribution (co-first authors).</sub>
 
+[![Project Page](https://img.shields.io/badge/Project-Page-2ea44f)](https://semantic-motion-anchors.github.io/)
 [![arXiv](https://img.shields.io/badge/arXiv-2605.30608-b31b1b.svg)](https://arxiv.org/abs/2605.30608)
 [![Dataset](https://img.shields.io/badge/%F0%9F%A4%97%20Dataset-SEMANTIX-ffcc4d)](https://huggingface.co/datasets/aboots/SEMANTIX)
 [![NeurIPS 2026](https://img.shields.io/badge/NeurIPS-2026-2563eb)](https://neurips.cc/virtual/2026/loc/paris/poster/154665)
